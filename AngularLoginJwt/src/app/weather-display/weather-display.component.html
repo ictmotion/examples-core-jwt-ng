@@ -1,0 +1,21 @@
+
+<div class="with-border">
+<br/>
+
+<form (ngSubmit)="onSubmitWeatherForm()" novalidate>
+  <button type="submit" >Get weather forecast from WebApi</button>
+</form>
+
+<br/>
+<label>{{loginError}}</label>
+<br/>
+
+<ul>
+  <li *ngFor="let weatherForecast of weatherForecastArray">
+    {{ weatherForecast.date | date: 'mediumDate' }}
+    {{ weatherForecast.temperatureC }}
+    {{ weatherForecast.summary }}
+  </li>
+  </ul>
+
+</div>

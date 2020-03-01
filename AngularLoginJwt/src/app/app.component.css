@@ -1,0 +1,5 @@
+.with-border {
+    padding: 6px;
+    margin: 6px;
+    border: 2px solid grey;
+  }

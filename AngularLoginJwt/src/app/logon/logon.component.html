@@ -1,0 +1,21 @@
+<div class="with-border">
+
+<form [formGroup]="logonForm" (ngSubmit)="onSubmit()" novalidate>
+<div>
+        <input type="text" formControlName="username" novalidate />
+        <input type="text" formControlName="password" novalidate />
+        <br/>
+        <label>{{loginError}}</label>
+        <br/>
+        <button type="submit" >Login now</button>
+</div>
+
+</form>
+
+<br/>
+<br/>
+Received token:
+<input style="width: 80%" type="text" value="{{ authenticationToken?.token }}"/>
+
+<br/>
+</div>
