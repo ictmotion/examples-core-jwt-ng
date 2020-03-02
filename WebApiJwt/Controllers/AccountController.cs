@@ -26,6 +26,7 @@ namespace WebApiJwt.Controllers
         }
 
         [AllowAnonymous]
+        [HttpPost]
         [Route("Logon")]
         public async Task<IActionResult> Logon([FromBody] LoginModel loginModel)
         {
@@ -58,7 +59,7 @@ namespace WebApiJwt.Controllers
         private string BuildToken(UserInfo userInfo)
         {
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JwtToken:SecretKey"]));
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var claims = new List<Claim>()
             {
@@ -73,7 +74,7 @@ namespace WebApiJwt.Controllers
                 audience: _config["JwtToken:Issuer"],
                 claims: claims.ToArray(),
                 expires: DateTime.Now.AddMinutes(90),
-                signingCredentials: creds);
+                signingCredentials: credentials);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }

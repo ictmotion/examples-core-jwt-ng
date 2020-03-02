@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApiJwt.Controllers
@@ -15,8 +16,8 @@ namespace WebApiJwt.Controllers
         };
 
         [HttpGet]
+        [Authorize]
         //[Authorize(Roles="Regular")]
-
         public IEnumerable<WeatherForecast> Get()
         {
             var random = new Random();
